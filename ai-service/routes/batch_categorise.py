@@ -19,17 +19,30 @@ def batch_categorise():
     for text in texts:
 
         prompt = f"""
-        You are an AI risk classification system.
+        You are an AI risk analysis system.
 
-        Classify the following text into ONE of these categories:
-        Cybersecurity, Financial, Operational, Compliance, Reputational
+Analyze the following text and return:
 
-        Return ONLY valid JSON:
-        {{
-          "category": "<one category>",
-          "confidence": <0 to 1>,
-          "reasoning": "<short explanation>"
-        }}
+1. category (choose one):
+   Cybersecurity, Financial, Operational, Compliance, Reputational
+
+2. confidence (0 to 1)
+
+3. severity (Low, Medium, High)
+
+4. impact (integer from 1 to 5)
+
+5. reasoning (short explanation)
+
+Return ONLY valid JSON:
+{{
+  "category": "...",
+  "confidence": 0.0,
+  "severity": "...",
+  "impact": 0,
+  "reasoning": "..."
+}}
+
 
         Text: {text}
         """

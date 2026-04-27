@@ -14,19 +14,30 @@ def categorise():
     user_text = data["text"]
 
     prompt = f"""
-    You are an AI risk classification system.
+    You are an AI risk analysis system.
 
-Classify the following text into ONE of these categories:
-Cybersecurity, Financial, Operational, Compliance, Reputational
+Analyze the following text and return:
 
-Return ONLY valid JSON. Do NOT add any explanation outside JSON.
+1. category (choose one):
+   Cybersecurity, Financial, Operational, Compliance, Reputational
 
-Format:
+2. confidence (0 to 1)
+
+3. severity (Low, Medium, High)
+
+4. impact (integer from 1 to 5)
+
+5. reasoning (short explanation)
+
+Return ONLY valid JSON:
 {{
-  "category": "<one category>",
-  "confidence": <number between 0 and 1>,
-  "reasoning": "<short explanation>"
+  "category": "...",
+  "confidence": 0.0,
+  "severity": "...",
+  "impact": 0,
+  "reasoning": "..."
 }}
+
 
     Text: {user_text}
     """
