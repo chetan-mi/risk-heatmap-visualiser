@@ -11,7 +11,6 @@
 
 ## 1. OWASP Top 10 — Threat Model
 
-
 ### Risk 1: A01 — Broken Access Control
 
 **Attack Scenario:**
@@ -116,7 +115,6 @@ investigate incidents after the fact.
 ---
 
 ## 2. Tool-Specific Security Threats
-
 
 ### Threat 1: Risk Score Tampering
 
@@ -257,21 +255,64 @@ breaking Demo Day if it happens then.
 
 ---
 
-## 4. Security Tests Log
+## 4. OWASP ZAP Baseline Scan — Day 7
 
-| Date        | Test                  | Result  | Notes                      |
-| ----------- | --------------------- | ------- | -------------------------- |
-| 24 Apr 2026 | Week 1 endpoint tests | PASS    | All 6 tests passed - Day 5 |
-| —           | OWASP ZAP baseline    | Pending | Scheduled Day 7            |
-| —           | OWASP ZAP active scan | Pending | Scheduled Day 11           |
-| —           | PII audit             | Pending | Scheduled Day 9            |
-| —           | Final sign-off        | Pending | Scheduled Day 15           |
+**Date:** 28 April 2026
+**Tool:** OWASP ZAP 2.17.0
+**Target:** http://127.0.0.1:5000/health
+**Report File:** zap-baseline-report.html
+
+### Findings
+
+| #   | Alert                                              | Severity | Status |
+| --- | -------------------------------------------------- | -------- | ------ |
+| 1   | Content Security Policy (CSP) Header Not Set       | Medium   | To Fix |
+| 2   | Server Leaks Version Information via Server Header | Low      | To Fix |
+| 3   | X-Content-Type-Options Header Missing              | Low      | To Fix |
+
+### Remediation Plan
+
+**Finding 1 — CSP Header Not Set (Medium):**
+Add Content-Security-Policy header to all Flask responses.
+This prevents XSS attacks by telling browsers which sources are trusted.
+Fix: Add CSP header via flask-talisman on Day 12.
+
+**Finding 2 — Server Version Leak (Low):**
+Flask reveals server version in HTTP response headers.
+Fix: Hide server header via flask-talisman on Day 12.
+
+**Finding 3 — X-Content-Type-Options Missing (Low):**
+Without this header browsers may misinterpret file types.
+Fix: Add X-Content-Type-Options: nosniff header via flask-talisman on Day 12.
+
+### Summary
+
+- Total findings: 3
+- Critical: 0
+- High: 0
+- Medium: 1
+- Low: 2
+- All findings scheduled for remediation on Day 12.
 
 ---
 
 ---
 
-## 5. Residual Risks
+## 5. Security Tests Log
+
+| Date        | Test                  | Result  | Notes                                                |
+| ----------- | --------------------- | ------- | ---------------------------------------------------- |
+| 24 Apr 2026 | Week 1 endpoint tests | PASS    | All 6 tests passed - Day 5                           |
+| 28 Apr 2026 | OWASP ZAP baseline    | DONE    | 3 findings — 1 Medium, 2 Low. Report in zap-reports/ |
+| —           | OWASP ZAP active scan | Pending | Scheduled Day 11                                     |
+| —           | PII audit             | Pending | Scheduled Day 9                                      |
+| —           | Final sign-off        | Pending | Scheduled Day 15                                     |
+
+---
+
+---
+
+## 6. Residual Risks
 
 To be completed after all tests are run (Day 15).
 
@@ -279,7 +320,7 @@ To be completed after all tests are run (Day 15).
 
 ---
 
-## 6. Team Sign-Off
+## 7. Team Sign-Off
 
 To be completed on Day 15 by all 6 team members.
 
