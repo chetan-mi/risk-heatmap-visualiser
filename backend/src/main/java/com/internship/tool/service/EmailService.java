@@ -11,6 +11,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import jakarta.mail.internet.MimeMessage;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public class EmailService {
     private String baseUrl;
 
     @Async
-    public void sendRiskCreatedEmail(String toEmail, String riskTitle, Long riskId) {
+    public void sendRiskCreatedEmail(String toEmail, String riskTitle, UUID riskId) {
         try {
             Context context = new Context();
             context.setVariable("riskTitle", riskTitle);
@@ -52,7 +53,7 @@ public class EmailService {
     }
 
     @Async
-    public void sendOverdueReminderEmail(String toEmail, String riskTitle, Long riskId, String ownerName) {
+    public void sendOverdueReminderEmail(String toEmail, String riskTitle, UUID riskId, String ownerName) {
         try {
             Context context = new Context();
             context.setVariable("riskTitle", riskTitle);
