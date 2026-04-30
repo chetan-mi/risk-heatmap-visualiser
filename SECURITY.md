@@ -264,11 +264,11 @@ breaking Demo Day if it happens then.
 
 ### Findings
 
-| #   | Alert                                              | Severity | Status |
-| --- | -------------------------------------------------- | -------- | ------ |
-| 1   | Content Security Policy (CSP) Header Not Set       | Medium   | To Fix |
-| 2   | Server Leaks Version Information via Server Header | Low      | To Fix |
-| 3   | X-Content-Type-Options Header Missing              | Low      | To Fix |
+| #   | Alert                                              | Severity | Status        |
+| --- | -------------------------------------------------- | -------- | ------------- |
+| 1   | Content Security Policy (CSP) Header Not Set       | Medium   | Fixed — Day 8 |
+| 2   | Server Leaks Version Information via Server Header | Low      | Fixed — Day 8 |
+| 3   | X-Content-Type-Options Header Missing              | Low      | Fixed — Day 8 |
 
 ### Remediation Plan
 
